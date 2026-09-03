@@ -1,5 +1,20 @@
 # vinext-starter
 
+## MadaPath — configuration e-mail (formulaire de contact)
+
+Pour que le formulaire de contact envoie réellement les messages à
+`jonathanrazafiarijaona@gmail.com`, définir la variable d'environnement sur
+l'hébergeur (Vercel → Project → Settings → Environment Variables) :
+
+```
+RESEND_API_KEY = re_...
+```
+
+Sans cette variable, le formulaire accepte les soumissions mais les journalise
+uniquement sur le serveur (aucun e-mail n'est délivré). Voir `.env.example`.
+
+---
+
 A clean full-stack starter running on
 [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
 Drizzle support.
