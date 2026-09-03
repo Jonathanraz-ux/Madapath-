@@ -65,14 +65,14 @@ export function Header({ lang }: { lang: Lang }) {
           <a href={`/${lang}#services`}>{c.nav.services}</a>
           <a href={`/${lang}#method`}>{c.nav.method}</a>
           <a href={`/${lang}/contact`}>{c.nav.contact}</a>
-          <a
+          <Link
             className="lang"
             href={switchHref}
             hrefLang={other}
             aria-label={lang === "fr" ? "Switch to English" : "Passer au fran\u00e7ais"}
           >
             {other.toUpperCase()}
-          </a>
+          </Link>
           <a className="nav-cta" href={`/${lang}#diagnostic`}>
             {c.nav.cta}
           </a>
