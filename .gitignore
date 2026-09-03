@@ -17,6 +17,10 @@
 /.next/
 /out/
 
+# dev logs
+/dev_err.log
+/dev_out.log
+
 # misc
 .DS_Store
 *.pem
