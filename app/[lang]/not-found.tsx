@@ -17,14 +17,14 @@ export default async function NotFoundPage({
       <main className="notfound">
         <div className="container">
           <span className="eyebrow">404</span>
-          <h1>{fr ? "Cette page n\u2019existe pas" : "This page doesn\u2019t exist"}</h1>
+          <h1>{fr ? "Cette page n’existe pas" : "This page doesn’t exist"}</h1>
           <p className="lead">
             {fr
-              ? "La page que vous cherchez est introuvable ou a \u00e9t\u00e9 d\u00e9plac\u00e9e. Retournez \u00e0 l\u2019accueil pour poursuivre."
+              ? "La page que vous cherchez est introuvable ou a été déplacée. Retournez à l’accueil pour poursuivre."
               : "The page you are looking for could not be found or may have moved. Return to the homepage to continue."}
           </p>
           <div className="actions">
-            <a className="button" href={`/${resolved}`}>{fr ? "Retour \u00e0 l\u2019accueil" : "Back to homepage"}</a>
+            <a className="button" href={`/${resolved}`}>{fr ? "Retour à l’accueil" : "Back to homepage"}</a>
             <a className="button secondary" href={`/${resolved}/contact`}>
               {fr ? "Contacter MadaPath" : "Contact MadaPath"}
             </a>

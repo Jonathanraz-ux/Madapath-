@@ -60,7 +60,7 @@ export function ContactForm({ lang }: { lang: Lang }) {
         <div className="form-row">
           <label htmlFor="contact-subject">{c.contactSubject} *</label>
           <select id="contact-subject" name="subject" required>
-            <option value="">{lang === "fr" ? "-- S\u00e9lectionnez --" : "-- Select --"}</option>
+            <option value="">{lang === "fr" ? "-- Sélectionnez --" : "-- Select --"}</option>
             {c.subjects.map((s, i) => (
               <option key={i} value={s}>{s}</option>
             ))}
@@ -93,7 +93,7 @@ export function ContactForm({ lang }: { lang: Lang }) {
             <a href={TEL_LINK} className="contact-link-item">
               <span className="contact-link-icon">{"\u260E"}</span>
               <div>
-                <strong>{lang === "fr" ? "T\u00e9l\u00e9phone" : "Phone"}</strong>
+                <strong>{lang === "fr" ? "Téléphone" : "Phone"}</strong>
                 <span>{PHONE_DISPLAY}</span>
               </div>
             </a>
@@ -110,7 +110,7 @@ export function ContactForm({ lang }: { lang: Lang }) {
               </div>
             </a>
             <a href={`mailto:${EMAIL}`} className="contact-link-item">
-              <span className="contact-link-icon">{"\u2709"}</span>
+              <span className="contact-link-icon">{"✉"}</span>
               <div>
                 <strong>E-mail</strong>
                 <span>{EMAIL}</span>
@@ -119,7 +119,7 @@ export function ContactForm({ lang }: { lang: Lang }) {
           </div>
           <p className="contact-response-time">
             {lang === "fr"
-              ? "Nous r\u00e9pondons en g\u00e9n\u00e9ral sous 24 \u00e0 48 heures ouvr\u00e9es."
+              ? "Nous répondons en général sous 24 à 48 heures ouvrées."
               : "We typically respond within 24 to 48 business hours."}
           </p>
         </div>

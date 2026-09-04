@@ -20,7 +20,7 @@ export async function generateMetadata({
     title: lang === "fr" ? "Contact" : "Contact",
     description:
       lang === "fr"
-        ? "Contactez MadaPath pour toute question relative \u00e0 vos d\u00e9marches \u00e0 Madagascar."
+        ? "Contactez MadaPath pour toute question relative à vos démarches à Madagascar."
         : "Contact MadaPath for any questions about your administrative procedures in Madagascar.",
     alternates: {
       canonical: `${SITE_URL}/${lang}/contact`,

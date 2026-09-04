@@ -13,12 +13,12 @@ export async function generateMetadata({
   return {
     title: {
       default: fr
-        ? "MadaPath | Travailler, investir et s\u2019installer \u00e0 Madagascar"
+        ? "MadaPath | Travailler, investir et s’installer à Madagascar"
         : "MadaPath | Work, Invest and Relocate to Madagascar",
       template: "%s",
     },
     description: fr
-      ? "MadaPath vous accompagne dans vos d\u00e9marches pour travailler, investir ou rejoindre votre famille \u00e0 Madagascar. Assistance administrative personnalis\u00e9e."
+      ? "MadaPath vous accompagne dans vos démarches pour travailler, investir ou rejoindre votre famille à Madagascar. Assistance administrative personnalisée."
       : "MadaPath assists professionals, investors and families with administrative procedures for working, investing and relocating to Madagascar.",
     icons: { icon: "/favicon.svg" },
     metadataBase: new URL(SITE_URL),

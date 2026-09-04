@@ -53,7 +53,7 @@ export function Diagnostic({
           {services[choice][lang].short}
           <br />
           <a className="more" href={`/${lang}/services/${choice}`}>
-            {"\u2192"} {services[choice][lang].name}
+            {"→"} {services[choice][lang].name}
           </a>
         </div>
       )}

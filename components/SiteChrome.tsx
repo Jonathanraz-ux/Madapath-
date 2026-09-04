@@ -69,7 +69,7 @@ export function Header({ lang }: { lang: Lang }) {
             className="lang"
             href={switchHref}
             hrefLang={other}
-            aria-label={lang === "fr" ? "Switch to English" : "Passer au fran\u00e7ais"}
+            aria-label={lang === "fr" ? "Switch to English" : "Passer au français"}
           >
             {other.toUpperCase()}
           </Link>
@@ -162,7 +162,7 @@ export function Footer({ lang }: { lang: Lang }) {
             <p>
               Antananarivo, Madagascar
               <br />
-              <Link href={frHref} hrefLang="fr">Fran\u00e7ais</Link>{" \u00b7 "}
+              <Link href={frHref} hrefLang="fr">Français</Link>{" · "}
               <Link href={enHref} hrefLang="en">English</Link>
             </p>
           </div>

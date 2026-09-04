@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Diagnostic } from "@/components/Diagnostic";
 import { Footer, Header, WhatsAppButton } from "@/components/SiteChrome";
+import PricingSection from "@/components/PricingSection";
 import {
   copy,
   services,
@@ -81,7 +82,7 @@ export default async function LangHome({
         availableLanguage: ["fr", "en"],
         sameAs: [],
         serviceType: fr
-          ? "Accompagnement administratif \u00e0 Madagascar"
+          ? "Accompagnement administratif à Madagascar"
           : "Administrative assistance in Madagascar",
         makesOffer: slugs.map((slug) => ({
           "@type": "Offer",
@@ -145,7 +146,7 @@ export default async function LangHome({
                   src="/images/hero.webp"
                   alt={
                     fr
-                      ? "Vue moderne d\u2019Antananarivo, accueil international et installation \u00e0 Madagascar"
+                      ? "Vue moderne d’Antananarivo, accueil international et installation à Madagascar"
                       : "Modern view of Antananarivo and international relocation to Madagascar"
                   }
                   width={640}
@@ -209,6 +210,8 @@ export default async function LangHome({
               </div>
             </div>
           </section>
+
+          <PricingSection lang={lang} />
 
           <section className="section" id="method">
             <div className="container method">

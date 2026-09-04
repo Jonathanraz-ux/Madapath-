@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
           text: [
             `Nom / Name: ${name}`,
             `Email: ${email}`,
-            `T\u00e9l\u00e9phone / Phone: ${phone || "N/A"}`,
+            `Téléphone / Phone: ${phone || "N/A"}`,
             `Motif / Subject: ${subject}`,
             "",
             message,
