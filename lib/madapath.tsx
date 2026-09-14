@@ -1,6 +1,7 @@
 export type Lang = "fr" | "en";
 
-export const SITE_URL = "https://madapath.com";
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://madapath.vercel.app";
 export const PHONE = "+261349320184";
 export const PHONE_DISPLAY = "034 93 201 84";
 export const EMAIL = "jonathanrazafiarijaona@gmail.com";

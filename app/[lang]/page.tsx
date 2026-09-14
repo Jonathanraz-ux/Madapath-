@@ -54,7 +54,6 @@ export async function generateMetadata({
       description: c.ogDescription,
       images: [`${SITE_URL}/images/og.webp`],
     },
-    robots: { index: true, follow: true },
   };
 }
 

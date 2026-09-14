@@ -103,7 +103,6 @@ export async function generateMetadata({
       title: titles[slug as ServiceSlug][lang as Lang],
       description: s.short,
     },
-    robots: { index: true, follow: true },
   };
 }
 

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { SITE_URL } from "@/lib/madapath";
 
+const IS_PREVIEW = process.env.VERCEL_ENV === "preview";
+
 export async function generateMetadata({
   params,
 }: {
@@ -29,6 +31,13 @@ export async function generateMetadata({
         "x-default": `${SITE_URL}/fr`,
       },
     },
+    robots: {
+      index: !IS_PREVIEW,
+      follow: true,
+    },
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+      : {}),
   };
 }
 
