@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
+  ArrowRight,
   Briefcase,
   Clock,
   Compass,
@@ -35,6 +36,17 @@ const serviceIcons: Record<ServiceSlug, typeof Briefcase> = {
 };
 
 const trustIcons = [ShieldCheck, Clock, Compass, FileCheck];
+
+const serviceTags: Record<ServiceSlug, Record<Lang, string>> = {
+  travailleur: { fr: "Travail & affaires", en: "Work & business" },
+  famille: { fr: "Famille", en: "Family" },
+  investisseur: { fr: "Investissement", en: "Investment" },
+};
+
+const longSejourTag: Record<Lang, string> = {
+  fr: "Long séjour",
+  en: "Long stay",
+};
 
 export function generateStaticParams() {
   return [{ lang: "fr" }, { lang: "en" }];
@@ -251,15 +263,18 @@ export default async function LangHome({
                   const img = images[slug];
                   return (
                     <article className="service-card" key={slug}>
-                      <Image
-                        src={img.src}
-                        alt={img.alt[lang]}
-                        width={400}
-                        height={240}
-                        loading="lazy"
-                        sizes="(max-width: 900px) 100vw, 33vw"
-                        className="service-img"
-                      />
+                      <div className="service-img-wrap">
+                        <Image
+                          src={img.src}
+                          alt={img.alt[lang]}
+                          width={400}
+                          height={240}
+                          loading="lazy"
+                          sizes="(max-width: 900px) 100vw, 33vw"
+                          className="service-img"
+                        />
+                        <span className="service-tag">{serviceTags[slug][lang]}</span>
+                      </div>
                       <span className="service-icon">
                         {(() => {
                           const Icon = serviceIcons[slug];
@@ -270,20 +285,24 @@ export default async function LangHome({
                       <p>{s.short}</p>
                       <a className="more" href={`/${lang}/services/${slug}`}>
                         {c.learn}
+                        <ArrowRight className="more-arrow" size={15} aria-hidden="true" />
                       </a>
                     </article>
                   );
                 })}
                 <article className="service-card">
-                  <Image
-                    src={longSejourImage.src}
-                    alt={longSejourImage.alt[lang]}
-                    width={400}
-                    height={240}
-                    loading="lazy"
-                    sizes="(max-width: 900px) 100vw, 25vw"
-                    className="service-img"
-                  />
+                  <div className="service-img-wrap">
+                    <Image
+                      src={longSejourImage.src}
+                      alt={longSejourImage.alt[lang]}
+                      width={400}
+                      height={240}
+                      loading="lazy"
+                      sizes="(max-width: 900px) 100vw, 25vw"
+                      className="service-img"
+                    />
+                    <span className="service-tag">{longSejourTag[lang]}</span>
+                  </div>
                   <span className="service-icon">
                     <Home size={22} strokeWidth={2} aria-hidden="true" />
                   </span>

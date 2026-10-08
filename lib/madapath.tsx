@@ -42,7 +42,7 @@ export const copy = {
     servicesEyebrow: "Des parcours selon votre situation",
     servicesTitle: "Une expertise, quatre chemins",
     servicesIntro: "Chaque statut répond à des conditions différentes. Nous construisons l’accompagnement autour de votre réalité, pas autour d’une formule générique.",
-    learn: "Voir le parcours →",
+    learn: "Voir le parcours",
     longSejour: {
       name: "Visa long séjour",
       short: "Nous vous accompagnons dans la préparation de votre dossier et le suivi de votre demande de visa long séjour à Madagascar.",
@@ -188,7 +188,7 @@ export const copy = {
     servicesEyebrow: "A path for every situation",
     servicesTitle: "One expertise, four paths",
     servicesIntro: "Every status comes with different conditions. We shape the support around your actual situation, not a generic package.",
-    learn: "Explore this path →",
+    learn: "Explore this path",
     longSejour: {
       name: "Long-stay Visa",
       short: "We support you in preparing your application file and following up on your long-stay visa request in Madagascar.",

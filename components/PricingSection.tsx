@@ -342,18 +342,21 @@ function CurrencyPicker({
   const options: Currency[] = ["EUR", "MGA", "USD"];
   return (
     <div className="currency-picker" role="radiogroup" aria-label={lang === "fr" ? "Sélection de la devise" : "Currency selector"}>
-      {options.map((opt) => (
-        <button
-          key={opt}
-          type="button"
-          role="radio"
-          aria-checked={currency === opt}
-          className={`currency-btn${currency === opt ? " active" : ""}`}
-          onClick={() => setCurrency(opt)}
-        >
-          {opt}
-        </button>
-      ))}
+      <div className="currency-seg">
+        <span className="currency-slide" data-cur={options.indexOf(currency)} aria-hidden="true" />
+        {options.map((opt) => (
+          <button
+            key={opt}
+            type="button"
+            role="radio"
+            aria-checked={currency === opt}
+            className={`currency-btn${currency === opt ? " active" : ""}`}
+            onClick={() => setCurrency(opt)}
+          >
+            {opt}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
