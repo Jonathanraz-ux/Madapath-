@@ -43,6 +43,16 @@ export const copy = {
     servicesTitle: "Une expertise, trois chemins",
     servicesIntro: "Chaque statut répond à des conditions différentes. Nous construisons l’accompagnement autour de votre réalité, pas autour d’une formule générique.",
     learn: "Voir le parcours →",
+    longSejour: {
+      name: "Visa long séjour",
+      short: "Nous vous accompagnons dans la préparation de votre dossier et le suivi de votre demande de visa long séjour à Madagascar.",
+      price: "2 000 000 Ar",
+      priceNote: "Honoraires MadaPath uniquement. Frais administratifs non inclus.",
+      precision: "Cette offre concerne l’accompagnement long séjour lorsque le visa transformable est déjà obtenu.",
+      cta: "Demander un accompagnement",
+      waMessage:
+        "Bonjour, je souhaite des informations sur votre accompagnement Visa long séjour à 2 000 000 Ar, hors frais administratifs.",
+    },
     methodEyebrow: "La méthode MadaPath",
     methodTitle: "Clair du premier échange au dernier document",
     methodIntro: "Notre rôle est de transformer une procédure complexe en étapes compréhensibles et maîtrisées.",
@@ -179,6 +189,16 @@ export const copy = {
     servicesTitle: "One expertise, three paths",
     servicesIntro: "Every status comes with different conditions. We shape the support around your actual situation, not a generic package.",
     learn: "Explore this path →",
+    longSejour: {
+      name: "Long-stay Visa",
+      short: "We support you in preparing your application file and following up on your long-stay visa request in Madagascar.",
+      price: "2 000 000 Ar",
+      priceNote: "MadaPath fees only. Administrative fees not included.",
+      precision: "This offer covers long-stay assistance once the transformable visa has already been obtained.",
+      cta: "Request assistance",
+      waMessage:
+        "Hello, I would like information about your Long-stay Visa assistance at 2 000 000 Ar, excluding administrative fees.",
+    },
     methodEyebrow: "The MadaPath method",
     methodTitle: "Clear from the first call to the final document",
     methodIntro: "We turn complex procedures into understandable, manageable steps.",
@@ -553,5 +573,13 @@ export const images: Record<ServiceSlug, { src: string; alt: { fr: string; en: s
       fr: "Entrepreneur en réunion professionnelle à Madagascar",
       en: "Entrepreneur in a professional meeting in Madagascar",
     },
+  },
+};
+
+export const longSejourImage = {
+  src: "/images/long-sejour.webp",
+  alt: {
+    fr: "Maison traditionnelle en terre dans la région d’Antananarivo, Madagascar",
+    en: "Traditional earthen house in the Antananarivo region of Madagascar",
   },
 };

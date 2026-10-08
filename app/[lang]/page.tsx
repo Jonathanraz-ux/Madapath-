@@ -9,10 +9,12 @@ import {
   services,
   slugs,
   images,
+  longSejourImage,
   type Lang,
   SITE_URL,
   PHONE,
   EMAIL,
+  WHATSAPP_LINK,
 } from "@/lib/madapath";
 
 export function generateStaticParams() {
@@ -83,14 +85,26 @@ export default async function LangHome({
         serviceType: fr
           ? "Accompagnement administratif à Madagascar"
           : "Administrative assistance in Madagascar",
-        makesOffer: slugs.map((slug) => ({
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: services[slug][lang].name,
-            description: services[slug][lang].short,
+        makesOffer: [
+          ...slugs.map((slug) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: services[slug][lang].name,
+              description: services[slug][lang].short,
+            },
+          })),
+          {
+            "@type": "Offer",
+            price: "2000000",
+            priceCurrency: "MGA",
+            itemOffered: {
+              "@type": "Service",
+              name: c.longSejour.name,
+              description: c.longSejour.short,
+            },
           },
-        })),
+        ],
       },
       {
         "@type": "WebSite",
@@ -182,7 +196,7 @@ export default async function LangHome({
                 </div>
                 <p className="section-intro">{c.servicesIntro}</p>
               </div>
-              <div className="services services-3">
+              <div className="services services-4">
                 {slugs.map((slug) => {
                   const s = services[slug][lang];
                   const img = images[slug];
@@ -206,6 +220,33 @@ export default async function LangHome({
                     </article>
                   );
                 })}
+                <article className="service-card">
+                  <Image
+                    src={longSejourImage.src}
+                    alt={longSejourImage.alt[lang]}
+                    width={400}
+                    height={240}
+                    loading="lazy"
+                    sizes="(max-width: 900px) 100vw, 25vw"
+                    className="service-img"
+                  />
+                  <span className="service-icon">⌂</span>
+                  <h3>{c.longSejour.name}</h3>
+                  <p>{c.longSejour.short}</p>
+                  <div className="pricing-amount">
+                    <span className="pricing-main">{c.longSejour.price}</span>
+                    <span className="pricing-excluded">{c.longSejour.priceNote}</span>
+                  </div>
+                  <p className="pricing-analysis-note">{c.longSejour.precision}</p>
+                  <a
+                    className="pricing-cta"
+                    href={`${WHATSAPP_LINK}${encodeURIComponent(c.longSejour.waMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {c.longSejour.cta}
+                  </a>
+                </article>
               </div>
             </div>
           </section>
