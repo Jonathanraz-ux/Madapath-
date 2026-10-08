@@ -40,7 +40,7 @@ export const copy = {
       "Suivre la procédure jusqu’à sa clôture",
     ],
     servicesEyebrow: "Des parcours selon votre situation",
-    servicesTitle: "Une expertise, trois chemins",
+    servicesTitle: "Une expertise, quatre chemins",
     servicesIntro: "Chaque statut répond à des conditions différentes. Nous construisons l’accompagnement autour de votre réalité, pas autour d’une formule générique.",
     learn: "Voir le parcours →",
     longSejour: {
@@ -186,7 +186,7 @@ export const copy = {
       "Follow the process through completion",
     ],
     servicesEyebrow: "A path for every situation",
-    servicesTitle: "One expertise, three paths",
+    servicesTitle: "One expertise, four paths",
     servicesIntro: "Every status comes with different conditions. We shape the support around your actual situation, not a generic package.",
     learn: "Explore this path →",
     longSejour: {

@@ -233,10 +233,6 @@ export default async function LangHome({
                   <span className="service-icon">⌂</span>
                   <h3>{c.longSejour.name}</h3>
                   <p>{c.longSejour.short}</p>
-                  <div className="pricing-amount">
-                    <span className="pricing-main">{c.longSejour.price}</span>
-                    <span className="pricing-excluded">{c.longSejour.priceNote}</span>
-                  </div>
                   <p className="pricing-analysis-note">{c.longSejour.precision}</p>
                   <a
                     className="pricing-cta"

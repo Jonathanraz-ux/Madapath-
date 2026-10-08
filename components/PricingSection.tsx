@@ -6,15 +6,21 @@ import {
   SERVICE_FEES_EUR,
   FALLBACK_RATES,
   convertPrice,
+  convertPriceFromMGA,
   type Currency,
 } from "@/lib/pricing";
 
-type PricingSlug = "visa_transformable" | "regroupement_familial" | "visa_investisseur";
+type PricingSlug =
+  | "visa_transformable"
+  | "regroupement_familial"
+  | "visa_investisseur"
+  | "visa_long_sejour";
 
 interface CardData {
   slug: PricingSlug;
   popular?: boolean;
-  basePrice: number;
+  basePrice?: number;
+  basePriceMGA?: number;
   extraLabel?: string;
   extraPrice?: number;
   needsAnalysis?: boolean;
@@ -34,6 +40,7 @@ const cards: CardData[] = [
     basePrice: SERVICE_FEES_EUR.visa_investisseur,
     needsAnalysis: true,
   },
+  { slug: "visa_long_sejour", basePriceMGA: 2000000 },
 ];
 
 const serviceLabels: Record<PricingSlug, { fr: string; en: string }> = {
@@ -43,6 +50,7 @@ const serviceLabels: Record<PricingSlug, { fr: string; en: string }> = {
     en: "Family Reunification",
   },
   visa_investisseur: { fr: "Visa investisseur", en: "Investor Visa" },
+  visa_long_sejour: { fr: "Visa long séjour", en: "Long-stay Visa" },
 };
 
 const serviceDescriptions: Record<PricingSlug, { fr: string; en: string }> = {
@@ -57,6 +65,10 @@ const serviceDescriptions: Record<PricingSlug, { fr: string; en: string }> = {
   visa_investisseur: {
     fr: "Accompagnement pour le visa investisseur lorsque la société ou la structure d'investissement nécessaire existe déjà.",
     en: "Assistance with the investor visa when the required company or investment structure already exists.",
+  },
+  visa_long_sejour: {
+    fr: "Accompagnement pour le visa long séjour, de la préparation du dossier au suivi de la demande, après obtention du visa transformable.",
+    en: "Assistance with the long-stay visa, from application preparation to follow-up, once the transformable visa has been obtained.",
   },
 };
 
@@ -131,6 +143,28 @@ const includedItems: Record<PricingSlug, { fr: string[]; en: string[] }> = {
       "Filing assistance where legally permitted",
       "Administrative follow-up",
       "Preparation for appointments requiring the applicant's attendance",
+    ],
+  },
+  visa_long_sejour: {
+    fr: [
+      "Analyse de la situation et de l’éligibilité au visa long séjour",
+      "Liste personnalisée des documents",
+      "Contrôle de la cohérence et de la complétude du dossier",
+      "Organisation des pièces",
+      "Assistance dans la préparation de la demande",
+      "Coordination avec la représentation ou l’organisme compétent",
+      "Suivi administratif jusqu’à la réception d’une réponse",
+      "Préparation du client aux étapes nécessitant sa présence",
+    ],
+    en: [
+      "Assessment of the situation and long-stay visa eligibility",
+      "Personalized document checklist",
+      "Consistency and completeness review",
+      "Organization of supporting documents",
+      "Assistance with application preparation",
+      "Coordination with the competent diplomatic mission or authority",
+      "Administrative follow-up until a response is received",
+      "Preparation for steps requiring the applicant's personal attendance",
     ],
   },
 };
@@ -212,6 +246,32 @@ const notIncludedItems: Record<PricingSlug, { fr: string[]; en: string[] }> = {
       "Travel, accommodation and transport",
       "Sector-specific licences or permits",
       "Third-party services",
+    ],
+  },
+  visa_long_sejour: {
+    fr: [
+      "Obtention du visa transformable (condition préalable)",
+      "Droits consulaires et gouvernementaux",
+      "Frais de délivrance du visa long séjour",
+      "Carte de résident",
+      "Traductions et légalisations",
+      "Casier judiciaire et documents officiels",
+      "Assurance",
+      "Transport et hébergement",
+      "Frais ou prestations de tiers",
+      "Représentation aux étapes exigeant légalement la présence du demandeur",
+    ],
+    en: [
+      "Obtention of the transformable visa (prerequisite)",
+      "Consular and government fees",
+      "Long-stay visa issuance fees",
+      "Residence card",
+      "Translations and legalizations",
+      "Criminal record and official documents",
+      "Insurance",
+      "Travel and accommodation",
+      "Third-party fees or services",
+      "Representation at stages legally requiring the applicant's presence",
     ],
   },
 };
@@ -325,8 +385,16 @@ function PricingCard({
       <p className="pricing-card-desc">{serviceDescriptions[card.slug][lang]}</p>
 
       <div className="pricing-amount">
-        <span className="pricing-main">{convertPrice(card.basePrice, currency, rates)}</span>
-        <span className="pricing-excluded">{c.administrativeFeesExcluded}</span>
+        <span className="pricing-main">
+          {card.basePriceMGA != null
+            ? convertPriceFromMGA(card.basePriceMGA, currency, rates)
+            : convertPrice(card.basePrice ?? 0, currency, rates)}
+        </span>
+        <span className="pricing-excluded">
+          {card.slug === "visa_long_sejour"
+            ? c.longSejour.priceNote
+            : c.administrativeFeesExcluded}
+        </span>
       </div>
 
       {card.extraPrice && (

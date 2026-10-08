@@ -35,6 +35,13 @@ export function convertPriceNumeric(eurAmount: number, currency: Currency, rates
   return Math.round(eurAmount * rates.EUR_MGA);
 }
 
+export function convertPriceFromMGA(mgaAmount: number, currency: Currency, rates: ExchangeRates): string {
+  if (currency === "MGA") return `${mgaAmount.toLocaleString("fr-MG")} Ar`;
+  const eur = mgaAmount / rates.EUR_MGA;
+  if (currency === "EUR") return `${Math.round(eur)} €`;
+  return `${Math.round(eur / rates.EUR_USD)} USD`;
+}
+
 export const CURRENCY_SYMBOLS: Record<Currency, string> = {
   EUR: "€",
   MGA: "Ar",
