@@ -33,6 +33,7 @@ const serviceIcons: Record<ServiceSlug, typeof Briefcase> = {
   travailleur: Briefcase,
   famille: HeartHandshake,
   investisseur: TrendingUp,
+  visa_long_sejour: Home,
 };
 
 const trustIcons = [ShieldCheck, Clock, Compass, FileCheck];
@@ -41,6 +42,7 @@ const serviceTags: Record<ServiceSlug, Record<Lang, string>> = {
   travailleur: { fr: "Travail & affaires", en: "Work & business" },
   famille: { fr: "Famille", en: "Family" },
   investisseur: { fr: "Investissement", en: "Investment" },
+  visa_long_sejour: { fr: "Long séjour", en: "Long stay" },
 };
 
 const longSejourTag: Record<Lang, string> = {
@@ -117,14 +119,16 @@ export default async function LangHome({
           ? "Accompagnement administratif à Madagascar"
           : "Administrative assistance in Madagascar",
         makesOffer: [
-          ...slugs.map((slug) => ({
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: services[slug][lang].name,
-              description: services[slug][lang].short,
-            },
-          })),
+          ...slugs
+            .filter((slug) => slug !== "visa_long_sejour")
+            .map((slug) => ({
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: services[slug][lang].name,
+                description: services[slug][lang].short,
+              },
+            })),
           {
             "@type": "Offer",
             price: "2000000",
@@ -258,38 +262,40 @@ export default async function LangHome({
                 <p className="section-intro">{c.servicesIntro}</p>
               </div>
               <div className="services services-4">
-                {slugs.map((slug) => {
-                  const s = services[slug][lang];
-                  const img = images[slug];
-                  return (
-                    <article className="service-card" key={slug}>
-                      <div className="service-img-wrap">
-                        <Image
-                          src={img.src}
-                          alt={img.alt[lang]}
-                          width={400}
-                          height={240}
-                          loading="lazy"
-                          sizes="(max-width: 900px) 100vw, 33vw"
-                          className="service-img"
-                        />
-                        <span className="service-tag">{serviceTags[slug][lang]}</span>
-                      </div>
-                      <span className="service-icon">
-                        {(() => {
-                          const Icon = serviceIcons[slug];
-                          return <Icon size={22} strokeWidth={2} aria-hidden="true" />;
-                        })()}
-                      </span>
-                      <h3>{s.name}</h3>
-                      <p>{s.short}</p>
-                      <a className="more" href={`/${lang}/services/${slug}`}>
-                        {c.learn}
-                        <ArrowRight className="more-arrow" size={15} aria-hidden="true" />
-                      </a>
-                    </article>
-                  );
-                })}
+                {slugs
+                  .filter((slug) => slug !== "visa_long_sejour")
+                  .map((slug) => {
+                    const s = services[slug][lang];
+                    const img = images[slug];
+                    return (
+                      <article className="service-card" key={slug}>
+                        <div className="service-img-wrap">
+                          <Image
+                            src={img.src}
+                            alt={img.alt[lang]}
+                            width={400}
+                            height={240}
+                            loading="lazy"
+                            sizes="(max-width: 900px) 100vw, 33vw"
+                            className="service-img"
+                          />
+                          <span className="service-tag">{serviceTags[slug][lang]}</span>
+                        </div>
+                        <span className="service-icon">
+                          {(() => {
+                            const Icon = serviceIcons[slug];
+                            return <Icon size={22} strokeWidth={2} aria-hidden="true" />;
+                          })()}
+                        </span>
+                        <h3>{s.name}</h3>
+                        <p>{s.short}</p>
+                        <a className="more" href={`/${lang}/services/${slug}`}>
+                          {c.learn}
+                          <ArrowRight className="more-arrow" size={15} aria-hidden="true" />
+                        </a>
+                      </article>
+                    );
+                  })}
                 <article className="service-card">
                   <div className="service-img-wrap">
                     <Image
@@ -309,6 +315,10 @@ export default async function LangHome({
                   <h3>{c.longSejour.name}</h3>
                   <p>{c.longSejour.short}</p>
                   <p className="pricing-analysis-note">{c.longSejour.precision}</p>
+                  <a className="more" href={`/${lang}/services/visa_long_sejour`}>
+                    {c.learn}
+                    <ArrowRight className="more-arrow" size={15} aria-hidden="true" />
+                  </a>
                   <a
                     className="pricing-cta"
                     href={`${WHATSAPP_LINK}${encodeURIComponent(c.longSejour.waMessage)}`}

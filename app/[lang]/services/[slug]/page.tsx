@@ -57,6 +57,10 @@ export async function generateMetadata({
       fr: "Visa investisseur à Madagascar | MadaPath",
       en: "Investor Visa in Madagascar | MadaPath",
     },
+    visa_long_sejour: {
+      fr: "Visa long séjour à Madagascar | MadaPath",
+      en: "Long-stay Visa in Madagascar | MadaPath",
+    },
   };
   const descriptions: Record<ServiceSlug, { fr: string; en: string }> = {
     travailleur: {
@@ -70,6 +74,10 @@ export async function generateMetadata({
     investisseur: {
       fr: "Obtenez votre visa investisseur à Madagascar lorsque votre structure existe déjà. MadaPath accompagne les investisseurs dans leurs formalités.",
       en: "Obtain your investor visa in Madagascar when your structure already exists. MadaPath assists investors with their administrative formalities.",
+    },
+    visa_long_sejour: {
+      fr: "Préparez votre demande de visa long séjour à Madagascar. MadaPath vous accompagne dans la préparation du dossier et le suivi de la demande.",
+      en: "Prepare your long-stay visa application in Madagascar. MadaPath supports you with file preparation and application follow-up.",
     },
   };
   return {

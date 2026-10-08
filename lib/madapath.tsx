@@ -10,7 +10,12 @@ export const WHATSAPP_MSG_EN = encodeURIComponent("Hello MadaPath, I would like 
 export const WHATSAPP_LINK = `https://wa.me/261349320184?text=`;
 export const TEL_LINK = `tel:${PHONE}`;
 
-export const slugs = ["travailleur", "famille", "investisseur"] as const;
+export const slugs = [
+  "travailleur",
+  "famille",
+  "investisseur",
+  "visa_long_sejour",
+] as const;
 export type ServiceSlug = (typeof slugs)[number];
 
 export const copy = {
@@ -547,6 +552,88 @@ export const services: Record<ServiceSlug, { fr: { name: string; short: string; 
       ],
     },
   },
+  visa_long_sejour: {
+    fr: {
+      name: "Visa long séjour",
+      short:
+        "Nous vous accompagnons dans la préparation de votre dossier et le suivi de votre demande de visa long séjour à Madagascar.",
+      title: "Votre demande de visa long séjour à Madagascar",
+      intro:
+        "MadaPath accompagne les personnes déjà titulaires d'un visa transformable dans la préparation et le suivi de leur demande de visa long séjour à Madagascar.",
+      items: [
+        "Analyse de la situation et de l'éligibilité au visa long séjour",
+        "Liste personnalisée des documents",
+        "Contrôle de la cohérence et de la complétude du dossier",
+        "Organisation des pièces",
+        "Assistance dans la préparation de la demande",
+        "Coordination avec la représentation ou l'organisme compétent",
+        "Suivi administratif jusqu'à la réception d'une réponse",
+        "Préparation du client aux étapes nécessitant sa présence",
+      ],
+      included: [
+        "Analyse de la situation et de l'éligibilité au visa long séjour",
+        "Liste personnalisée des documents",
+        "Contrôle de la cohérence et de la complétude du dossier",
+        "Organisation des pièces",
+        "Assistance dans la préparation de la demande",
+        "Coordination avec la représentation ou l'organisme compétent",
+        "Suivi administratif jusqu'à la réception d'une réponse",
+        "Préparation du client aux étapes nécessitant sa présence",
+      ],
+      notIncluded: [
+        "Obtention du visa transformable (condition préalable)",
+        "Droits consulaires et gouvernementaux",
+        "Frais de délivrance du visa long séjour",
+        "Carte de résident",
+        "Traductions et légalisations",
+        "Casier judiciaire et documents officiels",
+        "Assurance",
+        "Transport et hébergement",
+        "Frais ou prestations de tiers",
+        "Représentation aux étapes exigeant légalement la présence du demandeur",
+      ],
+    },
+    en: {
+      name: "Long-stay Visa",
+      short:
+        "We support you in preparing your application file and following up on your long-stay visa request in Madagascar.",
+      title: "Your long-stay visa application in Madagascar",
+      intro:
+        "MadaPath supports holders of a transformable visa in preparing and following up their long-stay visa application in Madagascar.",
+      items: [
+        "Assessment of the situation and long-stay visa eligibility",
+        "Personalized document checklist",
+        "Consistency and completeness review",
+        "Organization of supporting documents",
+        "Assistance with application preparation",
+        "Coordination with the competent diplomatic mission or authority",
+        "Administrative follow-up until a response is received",
+        "Preparation for steps requiring the applicant's personal attendance",
+      ],
+      included: [
+        "Assessment of the situation and long-stay visa eligibility",
+        "Personalized document checklist",
+        "Consistency and completeness review",
+        "Organization of supporting documents",
+        "Assistance with application preparation",
+        "Coordination with the competent diplomatic mission or authority",
+        "Administrative follow-up until a response is received",
+        "Preparation for steps requiring the applicant's personal attendance",
+      ],
+      notIncluded: [
+        "Obtention of the transformable visa (prerequisite)",
+        "Consular and government fees",
+        "Long-stay visa issuance fees",
+        "Residence card",
+        "Translations and legalizations",
+        "Criminal record and official documents",
+        "Insurance",
+        "Travel and accommodation",
+        "Third-party fees or services",
+        "Representation at stages legally requiring the applicant's presence",
+      ],
+    },
+  },
 };
 
 export const images: Record<ServiceSlug, { src: string; alt: { fr: string; en: string } }> = {
@@ -569,6 +656,13 @@ export const images: Record<ServiceSlug, { src: string; alt: { fr: string; en: s
     alt: {
       fr: "Entrepreneur en réunion professionnelle à Madagascar",
       en: "Entrepreneur in a professional meeting in Madagascar",
+    },
+  },
+  visa_long_sejour: {
+    src: "/images/long-sejour.webp",
+    alt: {
+      fr: "Maison traditionnelle en terre dans la région d’Antananarivo, Madagascar",
+      en: "Traditional earthen house in the Antananarivo region of Madagascar",
     },
   },
 };
