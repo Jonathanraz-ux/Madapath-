@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronRight, Globe, X } from "lucide-react";
 import {
@@ -59,9 +60,14 @@ export function Header({ lang }: { lang: Lang }) {
       </div>
       <header className="container nav">
         <Link className="brand" href={`/${lang}`}>
-          <span className="brand-mark">
-            <span>M</span>
-          </span>
+          <Image
+            src="/images/logo-header.png"
+            alt="MadaPath"
+            width={151}
+            height={120}
+            priority
+            className="brand-logo"
+          />
           MadaPath
         </Link>
         <nav className="nav-links" role="navigation" aria-label={lang === "fr" ? "Navigation principale" : "Main navigation"}>
@@ -118,9 +124,13 @@ export function Header({ lang }: { lang: Lang }) {
         <nav className="mobile-nav-inner">
           <div className="mobile-nav-head">
             <Link className="brand" href={`/${lang}`} onClick={closeMobileNav}>
-              <span className="brand-mark">
-                <span>M</span>
-              </span>
+              <Image
+                src="/images/logo-header.png"
+                alt="MadaPath"
+                width={151}
+                height={120}
+                className="brand-logo"
+              />
               MadaPath
             </Link>
             <button
@@ -181,9 +191,13 @@ export function Footer({ lang }: { lang: Lang }) {
         <div className="footer-grid">
           <div>
             <div className="brand">
-              <span className="brand-mark">
-                <span>M</span>
-              </span>
+              <Image
+                src="/images/logo-header.png"
+                alt="MadaPath"
+                width={151}
+                height={120}
+                className="brand-logo"
+              />
               MadaPath
             </div>
             <p>{c.footerText}</p>

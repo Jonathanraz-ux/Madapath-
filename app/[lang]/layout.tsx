@@ -36,7 +36,16 @@ export async function generateMetadata({
     description: fr
       ? "MadaPath vous accompagne dans vos démarches pour travailler, investir ou rejoindre votre famille à Madagascar. Assistance administrative personnalisée."
       : "MadaPath assists professionals, investors and families with administrative procedures for working, investing and relocating to Madagascar.",
-    icons: { icon: "/favicon.svg" },
+    icons: {
+      icon: [
+        { url: "/favicon.ico" },
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicon.png", sizes: "48x48", type: "image/png" },
+        { url: "/favicon.svg", type: "image/svg+xml" },
+      ],
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    },
     metadataBase: new URL(SITE_URL),
     alternates: {
       languages: {
