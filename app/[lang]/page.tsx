@@ -20,7 +20,6 @@ import {
   services,
   slugs,
   images,
-  longSejourImage,
   type Lang,
   type ServiceSlug,
   SITE_URL,
@@ -43,11 +42,6 @@ const serviceTags: Record<ServiceSlug, Record<Lang, string>> = {
   famille: { fr: "Famille", en: "Family" },
   investisseur: { fr: "Investissement", en: "Investment" },
   visa_long_sejour: { fr: "Long séjour", en: "Long stay" },
-};
-
-const longSejourTag: Record<Lang, string> = {
-  fr: "Long séjour",
-  en: "Long stay",
 };
 
 export function generateStaticParams() {
@@ -262,72 +256,36 @@ export default async function LangHome({
                 <p className="section-intro">{c.servicesIntro}</p>
               </div>
               <div className="services services-4">
-                {slugs
-                  .filter((slug) => slug !== "visa_long_sejour")
-                  .map((slug) => {
-                    const s = services[slug][lang];
-                    const img = images[slug];
-                    return (
-                      <article className="service-card" key={slug}>
-                        <div className="service-img-wrap">
-                          <Image
-                            src={img.src}
-                            alt={img.alt[lang]}
-                            width={400}
-                            height={240}
-                            loading="lazy"
-                            sizes="(max-width: 900px) 100vw, 33vw"
-                            className="service-img"
-                          />
-                          <span className="service-tag">{serviceTags[slug][lang]}</span>
-                        </div>
-                        <span className="service-icon">
-                          {(() => {
-                            const Icon = serviceIcons[slug];
-                            return <Icon size={22} strokeWidth={2} aria-hidden="true" />;
-                          })()}
-                        </span>
-                        <h3>{s.name}</h3>
-                        <p>{s.short}</p>
-                        <a className="more" href={`/${lang}/services/${slug}`}>
-                          {c.learn}
-                          <ArrowRight className="more-arrow" size={15} aria-hidden="true" />
-                        </a>
-                      </article>
-                    );
-                  })}
-                <article className="service-card">
-                  <div className="service-img-wrap">
-                    <Image
-                      src={longSejourImage.src}
-                      alt={longSejourImage.alt[lang]}
-                      width={400}
-                      height={240}
-                      loading="lazy"
-                      sizes="(max-width: 900px) 100vw, 25vw"
-                      className="service-img"
-                    />
-                    <span className="service-tag">{longSejourTag[lang]}</span>
-                  </div>
-                  <span className="service-icon">
-                    <Home size={22} strokeWidth={2} aria-hidden="true" />
-                  </span>
-                  <h3>{c.longSejour.name}</h3>
-                  <p>{c.longSejour.short}</p>
-                  <p className="pricing-analysis-note">{c.longSejour.precision}</p>
-                  <a className="more" href={`/${lang}/services/visa_long_sejour`}>
-                    {c.learn}
-                    <ArrowRight className="more-arrow" size={15} aria-hidden="true" />
-                  </a>
-                  <a
-                    className="pricing-cta"
-                    href={`${WHATSAPP_LINK}${encodeURIComponent(c.longSejour.waMessage)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {c.longSejour.cta}
-                  </a>
-                </article>
+                {slugs.map((slug) => {
+                  const s = services[slug][lang];
+                  const img = images[slug];
+                  const Icon = serviceIcons[slug];
+                  return (
+                    <article className="service-card" key={slug}>
+                      <div className="service-img-wrap">
+                        <Image
+                          src={img.src}
+                          alt={img.alt[lang]}
+                          width={400}
+                          height={300}
+                          loading="lazy"
+                          sizes="(max-width: 900px) 100vw, 25vw"
+                          className="service-img"
+                        />
+                        <span className="service-tag">{serviceTags[slug][lang]}</span>
+                      </div>
+                      <span className="service-icon">
+                        <Icon size={22} strokeWidth={2} aria-hidden="true" />
+                      </span>
+                      <h3>{s.name}</h3>
+                      <p>{s.short}</p>
+                      <a className="more" href={`/${lang}/services/${slug}`}>
+                        {c.learn}
+                        <ArrowRight className="more-arrow" size={15} aria-hidden="true" />
+                      </a>
+                    </article>
+                  );
+                })}
               </div>
             </div>
           </section>
