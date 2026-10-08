@@ -308,9 +308,8 @@ export const copy = {
   },
 };
 
-export const services: Record<ServiceSlug, { icon: string; fr: { name: string; short: string; title: string; intro: string; items: string[]; included: string[]; notIncluded: string[] }; en: { name: string; short: string; title: string; intro: string; items: string[]; included: string[]; notIncluded: string[] } }> = {
+export const services: Record<ServiceSlug, { fr: { name: string; short: string; title: string; intro: string; items: string[]; included: string[]; notIncluded: string[] }; en: { name: string; short: string; title: string; intro: string; items: string[]; included: string[]; notIncluded: string[] } }> = {
   travailleur: {
-    icon: "↗",
     fr: {
       name: "Visa transformable",
       short: "Accompagnement pour la demande de visa transformable, de l'évaluation initiale au suivi administratif.",
@@ -387,7 +386,6 @@ export const services: Record<ServiceSlug, { icon: string; fr: { name: string; s
     },
   },
   famille: {
-    icon: "⌃",
     fr: {
       name: "Regroupement familial",
       short: "Accompagnement pour le regroupement familial, les pièces d'état civil et l'installation de vos proches à Madagascar.",
@@ -460,7 +458,6 @@ export const services: Record<ServiceSlug, { icon: string; fr: { name: string; s
     },
   },
   investisseur: {
-    icon: "◇",
     fr: {
       name: "Visa investisseur",
       short: "Accompagnement pour le visa investisseur lorsque la société ou la structure d'investissement nécessaire existe déjà.",

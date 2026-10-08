@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
+import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "../globals.css";
 import { SITE_URL } from "@/lib/madapath";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
 
 const IS_PREVIEW = process.env.VERCEL_ENV === "preview";
 
@@ -51,7 +65,7 @@ export default async function RootLayout({
   const { lang } = (await params) ?? {};
   const htmlLang = lang === "en" ? "en" : "fr";
   return (
-    <html lang={htmlLang}>
+    <html lang={htmlLang} className={`${outfit.variable} ${jakarta.variable}`}>
       <body>{children}</body>
     </html>
   );

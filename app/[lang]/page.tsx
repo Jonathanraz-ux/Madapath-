@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Briefcase, HeartHandshake, Home, TrendingUp } from "lucide-react";
 import { Diagnostic } from "@/components/Diagnostic";
 import { Footer, Header, WhatsAppButton } from "@/components/SiteChrome";
 import PricingSection from "@/components/PricingSection";
@@ -11,11 +12,18 @@ import {
   images,
   longSejourImage,
   type Lang,
+  type ServiceSlug,
   SITE_URL,
   PHONE,
   EMAIL,
   WHATSAPP_LINK,
 } from "@/lib/madapath";
+
+const serviceIcons: Record<ServiceSlug, typeof Briefcase> = {
+  travailleur: Briefcase,
+  famille: HeartHandshake,
+  investisseur: TrendingUp,
+};
 
 export function generateStaticParams() {
   return [{ lang: "fr" }, { lang: "en" }];
@@ -211,7 +219,12 @@ export default async function LangHome({
                         sizes="(max-width: 900px) 100vw, 33vw"
                         className="service-img"
                       />
-                      <span className="service-icon">{services[slug].icon}</span>
+                      <span className="service-icon">
+                        {(() => {
+                          const Icon = serviceIcons[slug];
+                          return <Icon size={22} strokeWidth={2} aria-hidden="true" />;
+                        })()}
+                      </span>
                       <h3>{s.name}</h3>
                       <p>{s.short}</p>
                       <a className="more" href={`/${lang}/services/${slug}`}>
@@ -230,7 +243,9 @@ export default async function LangHome({
                     sizes="(max-width: 900px) 100vw, 25vw"
                     className="service-img"
                   />
-                  <span className="service-icon">⌂</span>
+                  <span className="service-icon">
+                    <Home size={22} strokeWidth={2} aria-hidden="true" />
+                  </span>
                   <h3>{c.longSejour.name}</h3>
                   <p>{c.longSejour.short}</p>
                   <p className="pricing-analysis-note">{c.longSejour.precision}</p>
