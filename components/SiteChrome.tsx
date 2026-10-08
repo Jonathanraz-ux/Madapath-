@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Globe } from "lucide-react";
+import { ChevronRight, Globe, X } from "lucide-react";
 import {
   copy,
   PHONE_DISPLAY,
@@ -106,12 +106,48 @@ export function Header({ lang }: { lang: Lang }) {
           <span />
         </button>
       </header>
-      <div className="mobile-nav-overlay" role="dialog" aria-label={lang === "fr" ? "Menu de navigation" : "Navigation menu"}>
+      <div
+        className="mobile-nav-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-label={lang === "fr" ? "Menu de navigation" : "Navigation menu"}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) closeMobileNav();
+        }}
+      >
         <nav className="mobile-nav-inner">
-          <a href={`/${lang}#services`} onClick={closeMobileNav}>{c.nav.services}</a>
-          <a href={`/${lang}#method`} onClick={closeMobileNav}>{c.nav.method}</a>
-          <a href={`/${lang}/contact`} onClick={closeMobileNav}>{c.nav.contact}</a>
-          <a href={`/${lang}#diagnostic`} className="nav-cta" onClick={closeMobileNav}>{c.nav.cta}</a>
+          <div className="mobile-nav-head">
+            <Link className="brand" href={`/${lang}`} onClick={closeMobileNav}>
+              <span className="brand-mark">
+                <span>M</span>
+              </span>
+              MadaPath
+            </Link>
+            <button
+              type="button"
+              className="mobile-nav-close"
+              aria-label={lang === "fr" ? "Fermer le menu" : "Close menu"}
+              onClick={closeMobileNav}
+            >
+              <X size={20} aria-hidden="true" />
+            </button>
+          </div>
+          <a href={`/${lang}#services`} onClick={closeMobileNav}>
+            {c.nav.services}
+            <ChevronRight className="nav-chev" size={16} aria-hidden="true" />
+          </a>
+          <a href={`/${lang}#method`} onClick={closeMobileNav}>
+            {c.nav.method}
+            <ChevronRight className="nav-chev" size={16} aria-hidden="true" />
+          </a>
+          <a href={`/${lang}/contact`} onClick={closeMobileNav}>
+            {c.nav.contact}
+            <ChevronRight className="nav-chev" size={16} aria-hidden="true" />
+          </a>
+          <a href={`/${lang}#diagnostic`} className="nav-cta" onClick={closeMobileNav}>
+            {c.nav.cta}
+            <ChevronRight className="nav-chev" size={16} aria-hidden="true" />
+          </a>
           <a
             className="lang"
             href={switchHref}
