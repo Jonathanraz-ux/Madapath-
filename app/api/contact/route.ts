@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { EMAIL } from "@/lib/madapath";
+import { EMAIL_RECEIVE } from "@/lib/madapath";
 
 export async function POST(request: NextRequest) {
   try {
@@ -26,8 +26,8 @@ export async function POST(request: NextRequest) {
         },
         body: JSON.stringify({
           from: "MadaPath <onboarding@resend.dev>",
-          to: EMAIL,
-          replyTo: email,
+          to: EMAIL_RECEIVE,
+          reply_to: email,
           subject: `[MadaPath] ${subject} — ${name}`,
           text: [
             `Nom / Name: ${name}`,

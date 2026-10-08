@@ -5,6 +5,7 @@ export const SITE_URL =
 export const PHONE = "+261349320184";
 export const PHONE_DISPLAY = "034 93 201 84";
 export const EMAIL = "jonathanrazafiarijaona@gmail.com";
+export const EMAIL_RECEIVE = "madapathservice@yahoo.com";
 export const WHATSAPP_MSG_FR = encodeURIComponent("Bonjour MadaPath, je souhaite obtenir des informations concernant vos services d’accompagnement à Madagascar.");
 export const WHATSAPP_MSG_EN = encodeURIComponent("Hello MadaPath, I would like more information about your assistance services in Madagascar.");
 export const WHATSAPP_LINK = `https://wa.me/261349320184?text=`;
