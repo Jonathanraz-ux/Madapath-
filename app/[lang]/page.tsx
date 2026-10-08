@@ -1,7 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Briefcase, HeartHandshake, Home, TrendingUp } from "lucide-react";
+import {
+  Briefcase,
+  Clock,
+  Compass,
+  FileCheck,
+  HeartHandshake,
+  Home,
+  ShieldCheck,
+  TrendingUp,
+} from "lucide-react";
 import { Diagnostic } from "@/components/Diagnostic";
 import { Footer, Header, WhatsAppButton } from "@/components/SiteChrome";
 import PricingSection from "@/components/PricingSection";
@@ -24,6 +33,8 @@ const serviceIcons: Record<ServiceSlug, typeof Briefcase> = {
   famille: HeartHandshake,
   investisseur: TrendingUp,
 };
+
+const trustIcons = [ShieldCheck, Clock, Compass, FileCheck];
 
 export function generateStaticParams() {
   return [{ lang: "fr" }, { lang: "en" }];
@@ -157,9 +168,15 @@ export default async function LangHome({
                   </a>
                 </div>
                 <div className="trust">
-                  {c.trust.map((x) => (
-                    <span key={x}>{x}</span>
-                  ))}
+                  {c.trust.map((x, i) => {
+                    const Icon = trustIcons[i % trustIcons.length];
+                    return (
+                      <span key={x}>
+                        <Icon size={15} strokeWidth={2.2} aria-hidden="true" />
+                        {x}
+                      </span>
+                    );
+                  })}
                 </div>
               </div>
               <div className="hero-media">
@@ -177,6 +194,30 @@ export default async function LangHome({
                   sizes="(max-width: 900px) 100vw, 480px"
                   className="hero-img"
                 />
+                <div className="hero-badge hero-badge-a">
+                  <span className="hero-badge-icon">
+                    <ShieldCheck size={18} aria-hidden="true" />
+                  </span>
+                  <span>
+                    <strong>
+                      {fr ? "100% conformité légale" : "100% legal compliance"}
+                    </strong>
+                    <small>
+                      {fr ? "et ministérielle" : "and ministerial"}
+                    </small>
+                  </span>
+                </div>
+                <div className="hero-badge hero-badge-b">
+                  <span className="hero-badge-icon">
+                    <Clock size={18} aria-hidden="true" />
+                  </span>
+                  <span>
+                    <strong>
+                      {fr ? "Réponse sous 24h" : "Reply within 24h"}
+                    </strong>
+                    <small>{fr ? "& suivi WhatsApp" : "& WhatsApp follow-up"}</small>
+                  </span>
+                </div>
               </div>
             </div>
             <div className="container">

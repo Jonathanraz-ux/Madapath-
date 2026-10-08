@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Globe } from "lucide-react";
 import {
   copy,
   PHONE_DISPLAY,
@@ -47,7 +48,9 @@ export function Header({ lang }: { lang: Lang }) {
   const c = copy[lang];
   const other: Lang = lang === "fr" ? "en" : "fr";
   const pathname = usePathname();
-  const switchHref = otherLangHref(pathname, lang);
+  const frHref = langVersionHref(pathname, "fr");
+  const enHref = langVersionHref(pathname, "en");
+  const switchHref = lang === "fr" ? enHref : frHref;
 
   return (
     <>
@@ -65,14 +68,29 @@ export function Header({ lang }: { lang: Lang }) {
           <a href={`/${lang}#services`}>{c.nav.services}</a>
           <a href={`/${lang}#method`}>{c.nav.method}</a>
           <a href={`/${lang}/contact`}>{c.nav.contact}</a>
-          <Link
-            className="lang"
-            href={switchHref}
-            hrefLang={other}
-            aria-label={lang === "fr" ? "Switch to English" : "Passer au français"}
+          <div
+            className="lang-switch"
+            role="group"
+            aria-label={lang === "fr" ? "Choix de langue" : "Language selection"}
           >
-            {other.toUpperCase()}
-          </Link>
+            <Globe size={13} className="lang-globe" aria-hidden="true" />
+            <Link
+              className={`lang-opt${lang === "fr" ? " active" : ""}`}
+              href={frHref}
+              hrefLang="fr"
+              aria-current={lang === "fr" ? "true" : undefined}
+            >
+              FR
+            </Link>
+            <Link
+              className={`lang-opt${lang === "en" ? " active" : ""}`}
+              href={enHref}
+              hrefLang="en"
+              aria-current={lang === "en" ? "true" : undefined}
+            >
+              EN
+            </Link>
+          </div>
           <a className="nav-cta" href={`/${lang}#diagnostic`}>
             {c.nav.cta}
           </a>
