@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import { type Lang, copy } from "@/lib/madapath";
-import { WHATSAPP_LINK, WHATSAPP_MSG_FR, WHATSAPP_MSG_EN, PHONE_DISPLAY, TEL_LINK, EMAIL } from "@/lib/madapath";
+import { WHATSAPP_LINK, WHATSAPP_MSG_FR, WHATSAPP_MSG_EN, PHONE_DISPLAY, TEL_LINK, EMAIL, EMAIL_RECEIVE } from "@/lib/madapath";
 
 export function ContactForm({ lang }: { lang: Lang }) {
   const c = copy[lang];
@@ -114,6 +114,13 @@ export function ContactForm({ lang }: { lang: Lang }) {
               <div>
                 <strong>E-mail</strong>
                 <span>{EMAIL}</span>
+              </div>
+            </a>
+            <a href={`mailto:${EMAIL_RECEIVE}`} className="contact-link-item">
+              <span className="contact-link-icon">{"✉"}</span>
+              <div>
+                <strong>E-mail</strong>
+                <span>{EMAIL_RECEIVE}</span>
               </div>
             </a>
           </div>

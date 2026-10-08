@@ -8,6 +8,7 @@ import {
   PHONE_DISPLAY,
   TEL_LINK,
   EMAIL,
+  EMAIL_RECEIVE,
   WHATSAPP_LINK,
   WHATSAPP_MSG_FR,
   WHATSAPP_MSG_EN,
@@ -170,6 +171,7 @@ export function Header({ lang }: { lang: Lang }) {
             <a href={TEL_LINK}>{PHONE_DISPLAY}</a>
             <a href={`${WHATSAPP_LINK}${lang === "fr" ? WHATSAPP_MSG_FR : WHATSAPP_MSG_EN}`} target="_blank" rel="noopener noreferrer">WhatsApp</a>
             <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+            <a href={`mailto:${EMAIL_RECEIVE}`}>{EMAIL_RECEIVE}</a>
           </div>
         </nav>
       </div>
@@ -211,6 +213,7 @@ export function Footer({ lang }: { lang: Lang }) {
                 WhatsApp
               </a>
               <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              <a href={`mailto:${EMAIL_RECEIVE}`}>{EMAIL_RECEIVE}</a>
             </div>
           </div>
           <div>
